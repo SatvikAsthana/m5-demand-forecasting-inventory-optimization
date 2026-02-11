@@ -1,5 +1,6 @@
 USE m5_retail;
 
+DROP TABLE IF EXISTS sku_profile;
 -- Join ABC classification with coefficient of variation
 CREATE TABLE sku_profile AS
 SELECT 
