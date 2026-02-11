@@ -1,0 +1,6 @@
+LOAD DATA LOCAL INFILE 'ABSOLUTE_PATH_TO_WEEKLY_SALES.csv'
+INTO TABLE sales_weekly
+FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+(item_id, store_id, wm_yr_wk, units_sold);
