@@ -1,6 +1,8 @@
 import pandas as pd
-from data_extraction import extract_a_class_weekly_data
-from feature_engineering import create_features
+import joblib
+import os
+from src.forecasting.data_extraction import extract_a_class_weekly_data
+from src.forecasting.feature_engineering import create_features
 from sklearn.metrics import mean_absolute_error
 import lightgbm as lgb
 import numpy as np
@@ -54,6 +56,18 @@ def train_model():
     )
 
     model.fit(X_train, y_train)
+    
+    os.makedirs("models", exist_ok=True)
+    joblib.dump(model, "models/lgbm_model.pkl")
+    print("Model saved to models/lgbm_model.pkl")
+
+    
+    importance_df = pd.DataFrame({
+        "feature": features,
+        "importance": model.feature_importances_
+        }).sort_values("importance", ascending=False)
+    print("\nTop 15 Features:")
+    print(importance_df.head(15))
 
     predictions = model.predict(X_test)
 
@@ -62,6 +76,13 @@ def train_model():
     print("Train size:", X_train.shape)
     print("Test size:", X_test.shape)
     print("MAE:", round(mae, 3))
+    
+    print("Train size:", X_train.shape)
+    print("Test size:", X_test.shape)
+    print("MAE:", round(mae, 3))
+    
+    return model, df, features
+
 
 
 if __name__ == "__main__":
