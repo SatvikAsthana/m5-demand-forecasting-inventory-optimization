@@ -172,30 +172,6 @@ These techniques are widely used in **retail analytics, supply chain management,
 
 ---
 
-## How to Run the Project
-
-1. Clone the repository
-
-```
-git clone https://github.com/yourusername/m5-demand-forecasting-inventory-optimization.git
-```
-
-2. Navigate to the project directory
-
-```
-cd m5-demand-forecasting-inventory-optimization
-```
-
-3. Install dependencies
-
-```
-pip install -r requirements.txt
-```
-
-4. Run notebooks for exploration and forecasting.
-
----
-
 ## Future Improvements
 
 Possible extensions of this project include:
